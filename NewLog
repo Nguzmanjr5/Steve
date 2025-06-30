@@ -1,0 +1,237 @@
+Python 3.10.11 (tags/v3.10.11:7d4cc5a, Apr  5 2023, 00:38:17) [MSC v.1929 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license()" for more information.
+
+= RESTART: C:\Users\nguzm\AppData\Local\Programs\Python\Python310\Doc\Peyton_Testing_RegimeSwitching.py
+[32m2025-06-30 10:56:12[0m - [1;30mINFO[0m - Attempting to connect to IBKR...
+[32m2025-06-30 10:56:12[0m - [1;30mINFO[0m - Connecting to 127.0.0.1:7497 with clientId 1072...
+[32m2025-06-30 10:56:12[0m - [1;30mINFO[0m - Connected
+[32m2025-06-30 10:56:12[0m - [1;30mINFO[0m - Logged on to server version 176
+[32m2025-06-30 10:56:12[0m - [1;30mINFO[0m - Warning 2104, reqId -1: Market data farm connection is OK:usopt.nj
+[32m2025-06-30 10:56:12[0m - [1;30mINFO[0m - Warning 2104, reqId -1: Market data farm connection is OK:usfarm.nj
+[32m2025-06-30 10:56:12[0m - [1;30mINFO[0m - Warning 2104, reqId -1: Market data farm connection is OK:usfarm
+[32m2025-06-30 10:56:12[0m - [1;30mINFO[0m - Warning 2104, reqId -1: Market data farm connection is OK:usopt
+[32m2025-06-30 10:56:12[0m - [1;30mINFO[0m - Warning 2106, reqId -1: HMDS data farm connection is OK:euhmds
+[32m2025-06-30 10:56:12[0m - [1;30mINFO[0m - Warning 2106, reqId -1: HMDS data farm connection is OK:fundfarm
+[32m2025-06-30 10:56:12[0m - [1;30mINFO[0m - Warning 2106, reqId -1: HMDS data farm connection is OK:ushmds
+[32m2025-06-30 10:56:12[0m - [1;30mINFO[0m - Warning 2158, reqId -1: Sec-def data farm connection is OK:secdefnj
+[32m2025-06-30 10:56:12[0m - [1;30mINFO[0m - API connection ready
+[32m2025-06-30 10:56:12[0m - [1;30mINFO[0m - Synchronization complete
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\nguzm\AppData\Local\Programs\Python\Python310\Doc\Peyton_Testing_RegimeSwitching.py", line 473, in <module>
+    logging.info(f"🔗 Connected to IBKR with Client ID: {ib.clientId}.")
+AttributeError: 'IB' object has no attribute 'clientId'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\nguzm\AppData\Local\Programs\Python\Python310\lib\logging\__init__.py", line 1103, in emit
+    stream.write(msg + self.terminator)
+  File "C:\Users\nguzm\AppData\Local\Programs\Python\Python310\lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+UnicodeEncodeError: 'charmap' codec can't encode character '\u274c' in position 34: character maps to <undefined>
+Call stack:
+  File "<string>", line 1, in <module>
+  File "C:\Users\nguzm\AppData\Local\Programs\Python\Python310\lib\idlelib\run.py", line 164, in main
+    ret = method(*args, **kwargs)
+  File "C:\Users\nguzm\AppData\Local\Programs\Python\Python310\lib\idlelib\run.py", line 578, in runcode
+    exec(code, self.locals)
+  File "C:\Users\nguzm\AppData\Local\Programs\Python\Python310\Doc\Peyton_Testing_RegimeSwitching.py", line 540, in <module>
+    logging.error(f"❌ Main loop or connection critical error: {e}")
+Message: "❌ Main loop or connection critical error: 'IB' object has no attribute 'clientId'"
+Arguments: ()
+[32m2025-06-30 10:56:12[0m - [1;30mERROR[0m - [31m❌ Main loop or connection critical error: 'IB' object has no attribute 'clientId'[0m
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\nguzm\AppData\Local\Programs\Python\Python310\Doc\Peyton_Testing_RegimeSwitching.py", line 473, in <module>
+    logging.info(f"🔗 Connected to IBKR with Client ID: {ib.clientId}.")
+AttributeError: 'IB' object has no attribute 'clientId'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\nguzm\AppData\Local\Programs\Python\Python310\lib\logging\__init__.py", line 1103, in emit
+    stream.write(msg + self.terminator)
+  File "C:\Users\nguzm\AppData\Local\Programs\Python\Python310\lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+UnicodeEncodeError: 'charmap' codec can't encode character '\U0001f517' in position 214: character maps to <undefined>
+Call stack:
+  File "<string>", line 1, in <module>
+  File "C:\Users\nguzm\AppData\Local\Programs\Python\Python310\lib\idlelib\run.py", line 164, in main
+    ret = method(*args, **kwargs)
+  File "C:\Users\nguzm\AppData\Local\Programs\Python\Python310\lib\idlelib\run.py", line 578, in runcode
+    exec(code, self.locals)
+  File "C:\Users\nguzm\AppData\Local\Programs\Python\Python310\Doc\Peyton_Testing_RegimeSwitching.py", line 541, in <module>
+    logging.info(tb_str)
+Message: 'Traceback (most recent call last):\n  File "C:\\Users\\nguzm\\AppData\\Local\\Programs\\Python\\Python310\\Doc\\Peyton_Testing_RegimeSwitching.py", line 473, in <module>\n    logging.info(f"🔗 Connected to IBKR with Client ID: {ib.clientId}.")\nAttributeError: \'IB\' object has no attribute \'clientId\'\n'
+Arguments: ()
+[32m2025-06-30 10:56:12[0m - [1;30mINFO[0m - Traceback (most recent call last):
+  File "C:\Users\nguzm\AppData\Local\Programs\Python\Python310\Doc\Peyton_Testing_RegimeSwitching.py", line 473, in <module>
+    logging.info(f"🔗 Connected to IBKR with Client ID: {ib.clientId}.")
+AttributeError: 'IB' object has no attribute 'clientId'
+
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\nguzm\AppData\Local\Programs\Python\Python310\Doc\Peyton_Testing_RegimeSwitching.py", line 473, in <module>
+    logging.info(f"🔗 Connected to IBKR with Client ID: {ib.clientId}.")
+AttributeError: 'IB' object has no attribute 'clientId'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\nguzm\AppData\Local\Programs\Python\Python310\lib\logging\__init__.py", line 1103, in emit
+    stream.write(msg + self.terminator)
+  File "C:\Users\nguzm\AppData\Local\Programs\Python\Python310\lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2705' in position 33: character maps to <undefined>
+Call stack:
+  File "<string>", line 1, in <module>
+  File "C:\Users\nguzm\AppData\Local\Programs\Python\Python310\lib\idlelib\run.py", line 164, in main
+    ret = method(*args, **kwargs)
+  File "C:\Users\nguzm\AppData\Local\Programs\Python\Python310\lib\idlelib\run.py", line 578, in runcode
+    exec(code, self.locals)
+  File "C:\Users\nguzm\AppData\Local\Programs\Python\Python310\Doc\Peyton_Testing_RegimeSwitching.py", line 542, in <module>
+    send_email("Bot Critical Error - Main", f"Main loop or connection error: {str(e)}\n\nTraceback:\n{tb_str}")
+  File "C:\Users\nguzm\AppData\Local\Programs\Python\Python310\Doc\Peyton_Testing_RegimeSwitching.py", line 57, in send_email
+    logging.info("✅ Email sent!")
+Message: '✅ Email sent!'
+Arguments: ()
+[32m2025-06-30 10:56:13[0m - [1;30mINFO[0m - ✅ Email sent!
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\nguzm\AppData\Local\Programs\Python\Python310\lib\logging\__init__.py", line 1103, in emit
+    stream.write(msg + self.terminator)
+  File "C:\Users\nguzm\AppData\Local\Programs\Python\Python310\lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+UnicodeEncodeError: 'charmap' codec can't encode character '\U0001f517' in position 33: character maps to <undefined>
+Call stack:
+  File "<string>", line 1, in <module>
+  File "C:\Users\nguzm\AppData\Local\Programs\Python\Python310\lib\idlelib\run.py", line 164, in main
+    ret = method(*args, **kwargs)
+  File "C:\Users\nguzm\AppData\Local\Programs\Python\Python310\lib\idlelib\run.py", line 578, in runcode
+    exec(code, self.locals)
+  File "C:\Users\nguzm\AppData\Local\Programs\Python\Python310\Doc\Peyton_Testing_RegimeSwitching.py", line 545, in <module>
+    logging.info("🔗 Disconnecting from IBKR.")
+Message: '🔗 Disconnecting from IBKR.'
+Arguments: ()
+[32m2025-06-30 10:56:13[0m - [1;30mINFO[0m - 🔗 Disconnecting from IBKR.
+[32m2025-06-30 10:56:13[0m - [1;30mINFO[0m - Disconnecting from 127.0.0.1:7497, 120 B sent in 8 messages, 18.9 kB received in 399 messages, session time 1.71 s.
+[32m2025-06-30 10:56:13[0m - [1;30mINFO[0m - Disconnecting
+
+= RESTART: C:\Users\nguzm\AppData\Local\Programs\Python\Python310\Doc\Peyton_Testing_RegimeSwitching.py
+[32m2025-06-30 11:02:27[0m - [1;30mINFO[0m - Attempting to connect to IBKR...
+[32m2025-06-30 11:02:27[0m - [1;30mINFO[0m - Connecting to 127.0.0.1:7497 with clientId 447...
+[32m2025-06-30 11:02:27[0m - [1;30mINFO[0m - Connected
+[32m2025-06-30 11:02:27[0m - [1;30mINFO[0m - Logged on to server version 176
+[32m2025-06-30 11:02:27[0m - [1;30mINFO[0m - Warning 2104, reqId -1: Market data farm connection is OK:usopt.nj
+[32m2025-06-30 11:02:27[0m - [1;30mINFO[0m - Warning 2104, reqId -1: Market data farm connection is OK:usfarm.nj
+[32m2025-06-30 11:02:27[0m - [1;30mINFO[0m - Warning 2104, reqId -1: Market data farm connection is OK:usfarm
+[32m2025-06-30 11:02:27[0m - [1;30mINFO[0m - Warning 2104, reqId -1: Market data farm connection is OK:usopt
+[32m2025-06-30 11:02:27[0m - [1;30mINFO[0m - Warning 2106, reqId -1: HMDS data farm connection is OK:euhmds
+[32m2025-06-30 11:02:27[0m - [1;30mINFO[0m - Warning 2106, reqId -1: HMDS data farm connection is OK:fundfarm
+[32m2025-06-30 11:02:27[0m - [1;30mINFO[0m - Warning 2106, reqId -1: HMDS data farm connection is OK:ushmds
+[32m2025-06-30 11:02:27[0m - [1;30mINFO[0m - Warning 2158, reqId -1: Sec-def data farm connection is OK:secdefnj
+[32m2025-06-30 11:02:27[0m - [1;30mINFO[0m - API connection ready
+[32m2025-06-30 11:02:27[0m - [1;30mINFO[0m - Synchronization complete
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\nguzm\AppData\Local\Programs\Python\Python310\Doc\Peyton_Testing_RegimeSwitching.py", line 473, in <module>
+    logging.info(f"🔗 Connected to IBKR with Client ID: {ib.clientId}.")
+AttributeError: 'IB' object has no attribute 'clientId'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\nguzm\AppData\Local\Programs\Python\Python310\lib\logging\__init__.py", line 1103, in emit
+    stream.write(msg + self.terminator)
+  File "C:\Users\nguzm\AppData\Local\Programs\Python\Python310\lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+UnicodeEncodeError: 'charmap' codec can't encode character '\u274c' in position 34: character maps to <undefined>
+Call stack:
+  File "<string>", line 1, in <module>
+  File "C:\Users\nguzm\AppData\Local\Programs\Python\Python310\lib\idlelib\run.py", line 164, in main
+    ret = method(*args, **kwargs)
+  File "C:\Users\nguzm\AppData\Local\Programs\Python\Python310\lib\idlelib\run.py", line 578, in runcode
+    exec(code, self.locals)
+  File "C:\Users\nguzm\AppData\Local\Programs\Python\Python310\Doc\Peyton_Testing_RegimeSwitching.py", line 540, in <module>
+    logging.error(f"❌ Main loop or connection critical error: {e}")
+Message: "❌ Main loop or connection critical error: 'IB' object has no attribute 'clientId'"
+Arguments: ()
+[32m2025-06-30 11:02:27[0m - [1;30mERROR[0m - [31m❌ Main loop or connection critical error: 'IB' object has no attribute 'clientId'[0m
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\nguzm\AppData\Local\Programs\Python\Python310\Doc\Peyton_Testing_RegimeSwitching.py", line 473, in <module>
+    logging.info(f"🔗 Connected to IBKR with Client ID: {ib.clientId}.")
+AttributeError: 'IB' object has no attribute 'clientId'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\nguzm\AppData\Local\Programs\Python\Python310\lib\logging\__init__.py", line 1103, in emit
+    stream.write(msg + self.terminator)
+  File "C:\Users\nguzm\AppData\Local\Programs\Python\Python310\lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+UnicodeEncodeError: 'charmap' codec can't encode character '\U0001f517' in position 214: character maps to <undefined>
+Call stack:
+  File "<string>", line 1, in <module>
+  File "C:\Users\nguzm\AppData\Local\Programs\Python\Python310\lib\idlelib\run.py", line 164, in main
+    ret = method(*args, **kwargs)
+  File "C:\Users\nguzm\AppData\Local\Programs\Python\Python310\lib\idlelib\run.py", line 578, in runcode
+    exec(code, self.locals)
+  File "C:\Users\nguzm\AppData\Local\Programs\Python\Python310\Doc\Peyton_Testing_RegimeSwitching.py", line 541, in <module>
+    logging.info(tb_str)
+Message: 'Traceback (most recent call last):\n  File "C:\\Users\\nguzm\\AppData\\Local\\Programs\\Python\\Python310\\Doc\\Peyton_Testing_RegimeSwitching.py", line 473, in <module>\n    logging.info(f"🔗 Connected to IBKR with Client ID: {ib.clientId}.")\nAttributeError: \'IB\' object has no attribute \'clientId\'\n'
+Arguments: ()
+[32m2025-06-30 11:02:27[0m - [1;30mINFO[0m - Traceback (most recent call last):
+  File "C:\Users\nguzm\AppData\Local\Programs\Python\Python310\Doc\Peyton_Testing_RegimeSwitching.py", line 473, in <module>
+    logging.info(f"🔗 Connected to IBKR with Client ID: {ib.clientId}.")
+AttributeError: 'IB' object has no attribute 'clientId'
+
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\nguzm\AppData\Local\Programs\Python\Python310\Doc\Peyton_Testing_RegimeSwitching.py", line 473, in <module>
+    logging.info(f"🔗 Connected to IBKR with Client ID: {ib.clientId}.")
+AttributeError: 'IB' object has no attribute 'clientId'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\nguzm\AppData\Local\Programs\Python\Python310\lib\logging\__init__.py", line 1103, in emit
+    stream.write(msg + self.terminator)
+  File "C:\Users\nguzm\AppData\Local\Programs\Python\Python310\lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2705' in position 33: character maps to <undefined>
+Call stack:
+  File "<string>", line 1, in <module>
+  File "C:\Users\nguzm\AppData\Local\Programs\Python\Python310\lib\idlelib\run.py", line 164, in main
+    ret = method(*args, **kwargs)
+  File "C:\Users\nguzm\AppData\Local\Programs\Python\Python310\lib\idlelib\run.py", line 578, in runcode
+    exec(code, self.locals)
+  File "C:\Users\nguzm\AppData\Local\Programs\Python\Python310\Doc\Peyton_Testing_RegimeSwitching.py", line 542, in <module>
+    send_email("Bot Critical Error - Main", f"Main loop or connection error: {str(e)}\n\nTraceback:\n{tb_str}")
+  File "C:\Users\nguzm\AppData\Local\Programs\Python\Python310\Doc\Peyton_Testing_RegimeSwitching.py", line 57, in send_email
+    logging.info("✅ Email sent!")
+Message: '✅ Email sent!'
+Arguments: ()
+[32m2025-06-30 11:02:29[0m - [1;30mINFO[0m - ✅ Email sent!
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\nguzm\AppData\Local\Programs\Python\Python310\lib\logging\__init__.py", line 1103, in emit
+    stream.write(msg + self.terminator)
+  File "C:\Users\nguzm\AppData\Local\Programs\Python\Python310\lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+UnicodeEncodeError: 'charmap' codec can't encode character '\U0001f517' in position 33: character maps to <undefined>
+Call stack:
+  File "<string>", line 1, in <module>
+  File "C:\Users\nguzm\AppData\Local\Programs\Python\Python310\lib\idlelib\run.py", line 164, in main
+    ret = method(*args, **kwargs)
+  File "C:\Users\nguzm\AppData\Local\Programs\Python\Python310\lib\idlelib\run.py", line 578, in runcode
+    exec(code, self.locals)
+  File "C:\Users\nguzm\AppData\Local\Programs\Python\Python310\Doc\Peyton_Testing_RegimeSwitching.py", line 545, in <module>
+    logging.info("🔗 Disconnecting from IBKR.")
+Message: '🔗 Disconnecting from IBKR.'
+Arguments: ()
+[32m2025-06-30 11:02:29[0m - [1;30mINFO[0m - 🔗 Disconnecting from IBKR.
+[32m2025-06-30 11:02:29[0m - [1;30mINFO[0m - Disconnecting from 127.0.0.1:7497, 119 B sent in 8 messages, 18.9 kB received in 399 messages, session time 1.89 s.
+[32m2025-06-30 11:02:29[0m - [1;30mINFO[0m - Disconnecting
+
