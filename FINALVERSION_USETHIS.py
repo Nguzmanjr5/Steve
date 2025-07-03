@@ -64,7 +64,7 @@ STATE_FILE = "trade_state.json"
 
 # --- ADJUST THESE VALUES AS NEEDED ---
 strategy_config = {
-    "BASE_ALLOCATION_PERCENT": 0.03, # Changed from 0.05 to 0.03
+    "BASE_ALLOCATION_PERCENT": 0.05,
     "BASE_TRAILING_PERCENT": 11.0, # Changed from 15.0 to 11.0
     "VIX_HIGH_SIGNAL_THRESHOLD": 25.0, # Changed from 24 to 25
     "VIX_HIGH_RISK_THRESHOLD": 24.0,
@@ -75,18 +75,18 @@ strategy_config = {
     "RSI_STD_OVERBOUGHT": 72.0, # Changed from 70 to 72
     "HIGH_VIX_ALLOCATION_MULT": 0.35, # Changed from 0.5 to 0.35
     "LOW_VIX_ALLOCATION_MULT": 1.25, # Changed from 1.15 to 1.25
-    "HIGH_VIX_TRAILING_STOP": 20.0,
-    "LOW_VIX_TRAILING_STOP": 10.0,
+    "HIGH_VIX_TRAILING_STOP": 22.0, # Changed from 20.0 to 22.0
+    "LOW_VIX_TRAILING_STOP": 11.0, # Changed from 10.0 to 11.0
     "MIN_VOLUME": 100,
     # "MIN_OPEN_INTEREST": 500,
     # --- NORMAL/LOW VIX - TREND FOLLOWING ---
-    "TREND_PROFIT_TARGET_1": 25.0,  # Move to breakeven at 25%
-    "TREND_PROFIT_TARGET_2": 50.0,  # Tighten stop at 50%
-    "TREND_TIGHTENED_STOP": 8.0,    # The tightened stop for trends
+    "TREND_PROFIT_TARGET_1": 20.0,
+    "TREND_PROFIT_TARGET_2": 36.0,
+    "TREND_TIGHTENED_STOP": 8.5,
     # --- HIGH VIX - MEAN REVERSION ---
-    "REVERSION_PROFIT_TARGET_1": 15.0,  # Move to breakeven at only 15%
-    "REVERSION_PROFIT_TARGET_2": 30.0,  # Tighten stop at only 30%
-    "REVERSION_TIGHTENED_STOP": 5.0     # An even tighter stop for choppy markets
+    "REVERSION_PROFIT_TARGET_1": 26.0,
+    "REVERSION_PROFIT_TARGET_2": 50.0,
+    "REVERSION_TIGHTENED_STOP": 6.0
 }
 
 def save_trade_state(contract, entry_price, quantity, highest_price, trailing_percent, active_regime, breakeven_activated=False, profit_lock_activated=False):
@@ -177,8 +177,8 @@ def get_option_snapshot(contract):
         logging.warning(f"IBKR did not return a ticker object for {contract.localSymbol}.")
         return None
     
-    if ticker.last != ticker.last and ticker.bid != ticker.bid:
-        logging.warning(f"Ticker for {contract.localSymbol} returned but contains no valid data.")
+    if ticker.delayedLast != ticker.delayedLast and ticker.delayedBid != ticker.delayedBid:
+        logging.warning(f"Ticker for {contract.localSymbol} returned but contains no valid delayed data.")
         return None
 
     return ticker
@@ -365,11 +365,22 @@ def monitor_position_with_trailing(contract, entry_price, quantity, dynamic_trai
 
         ticker = get_option_snapshot(contract)
         if ticker is None: continue
-        
-        current_price = ticker.last
-        if current_price != current_price: current_price = (ticker.bid + ticker.ask) / 2
+
+        # --- ROBUST PRICE EXTRACTION LOGIC ---
+        # Create a list of potential price sources in order of preference.
+        price_sources = [
+            ticker.delayedLast,
+            ticker.last,
+            (ticker.delayedBid + ticker.delayedAsk) / 2,
+            (ticker.bid + ticker.ask) / 2
+        ]
+        current_price = next((price for price in price_sources if price == price and price > 0), None)
+
+        if current_price is None:
+            logging.warning(f"Could not determine a valid price for {contract.localSymbol}. Skipping this tick.")
+            continue
+
         current_price = round(current_price, 2)
-        if current_price <= 0: continue
 
         state_changed = False
 
@@ -508,9 +519,19 @@ def trade_spy_options(spy_ticker):
         return
     logging.info(f"Liquidity check passed. Volume={volume}")
 
-    price = ticker.last if ticker.last == ticker.last else (ticker.bid + ticker.ask) / 2
-    option_price = round(price, 2)
-    if option_price <= 0: return
+    price_sources = [
+        ticker.delayedLast,
+        ticker.last,
+        (ticker.delayedBid + ticker.delayedAsk) / 2,
+        (ticker.bid + ticker.ask) / 2
+    ]
+    option_price = next((price for price in price_sources if price == price and price > 0), None)
+
+    if option_price is None:
+        logging.warning(f"Could not determine a valid entry price for {contract.localSymbol}. Aborting trade.")
+        return
+
+    option_price = round(option_price, 2)
 
     balance = get_account_balance()
     if balance <= 0: return
